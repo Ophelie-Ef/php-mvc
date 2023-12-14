@@ -7,5 +7,6 @@ $routes =  [
     ['contact', 'contact', 'index'],
     ['about', 'about', 'index'],
     ['articles', 'article', 'index'],
-    ['article', 'article', 'show', ['id']]
+    ['article', 'article', 'show', ['id']],
+    ['delete', 'article', 'delete', ['id']]
 ];
