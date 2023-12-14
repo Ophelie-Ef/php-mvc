@@ -15,9 +15,9 @@ class ContactController extends Controller
         $titreContact = 'Bienvenue sur la page contact';
 
         $persons = [
-            'nom' => 'Doe',
-            'prenom' => 'Jane',
-            'age' => 45
+            'nom' => 'Onizuka',
+            'prenom' => 'Eikichi',
+            'age' => 22
         ];
 
         $this->render('app.contact.index',[
