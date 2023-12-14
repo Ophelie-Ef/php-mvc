@@ -1,8 +1,15 @@
 <?php
 // $this->dd($articles);
-foreach ($articles as $billetdeblog) {
+// $this->dd($nombre)
 ?>
 
+<p>Il y a <?= $nombre ?> articles sur ce blog.</p>
+
+<?php
+
+foreach ($articles as $billetdeblog) {
+
+?>
     <figure>
 
         <figcaption>

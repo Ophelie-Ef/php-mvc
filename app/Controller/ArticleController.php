@@ -16,10 +16,12 @@ class ArticleController extends Controller
     {
         $articles = PostModel::all();
         $user = new UserModel;
+        $nombre = count($articles);
 
         $this->render('app.articles.index', [
             'articles' => $articles,
-            'user' => $user
+            'user' => $user,
+            'nombre' => $nombre
         ]);
     }
 
@@ -27,9 +29,14 @@ class ArticleController extends Controller
     {
         $note = PostModel::findById($id);
         $user = new UserModel;
+
         $this->render('app.articles.show', [
             'note' => $note,
             'user' => $user
         ]);
     }
 }
+
+// public static function count(){
+//     return App::getDatabase()->aggregation("SELECT COUNT(id) FROM " . self::getTable());
+// }
