@@ -17,9 +17,19 @@ class ArticleController extends Controller
         $articles = PostModel::all();
         $user = new UserModel;
 
-        $this->render('app.articles.index', array(
+        $this->render('app.articles.index', [
             'articles' => $articles,
             'user' => $user
-        ));
+        ]);
+    }
+
+    public function show($id)
+    {
+        $note = PostModel::findById($id);
+        $user = new UserModel;
+        $this->render('app.articles.show', [
+            'note' => $note,
+            'user' => $user
+        ]);
     }
 }

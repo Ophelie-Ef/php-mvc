@@ -1,5 +1,5 @@
 <?php
-
+// $this->dd($articles);
 foreach ($articles as $billetdeblog) {
 ?>
 
@@ -7,16 +7,12 @@ foreach ($articles as $billetdeblog) {
 
         <figcaption>
 
-            <h2><?= $billetdeblog->title ?></h2>
-
-            <p><?= $billetdeblog->content ?></p>
+            <h2><a href="<?= $view->path('article', [$billetdeblog->id]) ?>"><?= $billetdeblog->title ?></a></h2>
 
             <p>Auteur : <?= $user->findById($billetdeblog->author, 'id')->firstname . ' ' .
                             $user->findById($billetdeblog->author, 'id')->lastname ?></p>
 
             <p>Posté le : <?= $billetdeblog->createdAt ?></p>
-
-            <p>Modifié le : <?= $billetdeblog->modifiedAt ?></p>
 
         </figcaption>
 
@@ -24,3 +20,4 @@ foreach ($articles as $billetdeblog) {
 
 <?php
 }
+?>
