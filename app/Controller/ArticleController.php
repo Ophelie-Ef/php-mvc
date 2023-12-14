@@ -16,8 +16,8 @@ class ArticleController extends Controller
         $articles = PostModel::all();
         // $this->dd($articles);
 
-        // $this->render('app.article.index',array(
-        //     'articles'=> $articles            
-        // ));
+        $this->render('app.articles.index',array(
+            'articles'=> $articles            
+        ));
     }
 }
