@@ -40,12 +40,12 @@ class Validation
      * @return string $error
      */
 
-    public function textValid($text, $title, $min = 3,  $max = 50, $empty = true)
+    public function textValid($textParam, $title, $min = 3,  $max = 50, $empty = true)
     {
 
         $error = '';
-        if(!empty($text)) {
-            $strtext = strlen($text);
+        if(!empty($textParam)) {
+            $strtext = strlen($textParam);
             if($strtext > $max) {
                 $error = 'Votre ' . $title . ' est trop long.';
             } elseif($strtext < $min) {
@@ -53,7 +53,7 @@ class Validation
             }
         } else {
             if($empty) {
-                $error = 'Veuillez renseigner un ' . $title . '.';
+                $error = 'Veuillez renseigner un ' . $title . ' valide.';
             }
         }
         return $error;

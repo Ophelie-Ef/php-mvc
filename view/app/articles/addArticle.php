@@ -1,14 +1,23 @@
+<?php
+
+// $this->dd($users);
+
+?>
+
 <section>
     <h3>Ajout d'un article</h3>
     <form method="POST">
-        <?= $formAdd->label('Titre') ?>
-        <?= $formAdd->input('Titre') ?>
-        <?= $formAdd->error('Titre') ?>
+        <?= $formAdd->label('titre') ?>
+        <?= $formAdd->input('titre') ?>
+        <?= $formAdd->error('titre') ?>
 
-        <?= $formAdd->label('Contenu') ?>
-        <?= $formAdd->textarea('Contenu') ?>
-        <?= $formAdd->error('Contenu') ?>
+        <?= $formAdd->label('contenu') ?>
+        <?= $formAdd->textarea('contenu') ?>
+        <?= $formAdd->error('contenu') ?>
 
-        <?= $formAdd->submit('', 'Ajouter mon article') ?>
+        <?= $formAdd->select('auteur', $users, 'firstname') ?>
+        <?= $formAdd->error('auteur') ?>
+
+        <?= $formAdd->submit('submitted', 'Ajouter mon article') ?>
     </form>
 </section>
