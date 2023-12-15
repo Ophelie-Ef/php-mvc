@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Weblitzer;
+
 use App\App;
+
 /**
  *
  */
@@ -23,34 +25,38 @@ class Model
      */
     public static function all()
     {
-        return App::getDatabase()->query("SELECT * FROM ".self::getTable(),get_called_class());
+        return App::getDatabase()->query("SELECT * FROM " . self::getTable(), get_called_class());
     }
 
-    public static function findById($id,$columId = 'id')
+    public static function allOrder($order = 'ASC', $columId = 'id')
     {
-        return App::getDatabase()->prepare("SELECT * FROM " . self::getTable() . " WHERE ".$columId." = ?",[$id],get_called_class(),true);
+        return App::getDatabase()->query("SELECT * FROM " . self::getTable() . " ORDER BY " . $columId . " " . $order, get_called_class(), true);
     }
 
-    public static function findByColumn($column,$value)
+    public static function findById($id, $columId = 'id')
     {
-        return App::getDatabase()->prepare("SELECT * FROM " . self::getTable() . " WHERE ".$column." = ?",[$value],get_called_class(),true);
+        return App::getDatabase()->prepare("SELECT * FROM " . self::getTable() . " WHERE " . $columId . " = ?", [$id], get_called_class(), true);
     }
 
-    public static function count(){
+    public static function findByColumn($column, $value)
+    {
+        return App::getDatabase()->prepare("SELECT * FROM " . self::getTable() . " WHERE " . $column . " = ?", [$value], get_called_class(), true);
+    }
+
+    public static function count()
+    {
         return App::getDatabase()->aggregation("SELECT COUNT(id) FROM " . self::getTable());
     }
 
-    public static function delete($id,$columId = 'id')
+    public static function delete($id, $columId = 'id')
     {
-        return App::getDatabase()->prepareInsert("DELETE FROM " . self::getTable() . " WHERE ".$columId." = ?",[$id],get_called_class(),true);
+        return App::getDatabase()->prepareInsert("DELETE FROM " . self::getTable() . " WHERE " . $columId . " = ?", [$id], get_called_class(), true);
     }
 
     public function __get($key)
     {
-        $method = 'get'.ucfirst($key);
+        $method = 'get' . ucfirst($key);
         $this->key = $this->$method();
         return $this->key;
     }
-
-
 }
