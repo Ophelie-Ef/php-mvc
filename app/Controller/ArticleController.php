@@ -59,8 +59,9 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $articleEdit = $this->isArticleExist($id);
         $errors = [];
 
         // Test de validation du formulaire
@@ -86,6 +87,7 @@ class ArticleController extends Controller
 
         $this->render('app.articles.editArticle', [
             'formAddEdit' => $formAddEdit,
+            'articleEdit' => $articleEdit
         ]);
     }
 

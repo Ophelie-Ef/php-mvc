@@ -16,7 +16,6 @@
         <?= $formAdd->error('contenu') ?>
 
         <?= $formAdd->select('auteur', $users, 'firstname') ?>
-        <?= $formAdd->error('auteur') ?>
 
         <?= $formAdd->submit('submitted', 'Ajouter mon article') ?>
     </form>
