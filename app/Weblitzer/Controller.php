@@ -46,7 +46,7 @@ class Controller
      */
     protected function dbug($var)
     {
-        echo '<pre style="background-color:black;color:white;overflow: auto;padding: 1rem;font-family:monospace;">';
+        echo '<pre style="background-color:black;color:chartreuse;overflow: auto;padding: 1rem;font-family:monospace;">';
         print_r($var);
         echo '</pre>';
     }
@@ -57,7 +57,7 @@ class Controller
      */
     protected function dd($var)
     {
-        echo '<pre style="background-color:black;color:white;overflow: auto;padding: 1rem;font-family:monospace;">';
+        echo '<pre style="background-color:black;color:chartreuse;overflow: auto;padding: 1rem;font-family:monospace;">';
         print_r($var);
         echo '</pre>';
         die();
