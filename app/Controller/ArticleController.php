@@ -59,6 +59,37 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function edit()
+    {
+        $errors = [];
+
+        // Test de validation du formulaire
+        if (!empty($_POST['submitted'])) :
+
+            $postArticleEdit = $this->cleanXss(($_POST));
+
+            $validerArticleEdit = new Validation;
+
+            $errors['titre'] = $validerArticleEdit->textValid($postArticleEdit['titre'], 'titre', 5, 100);
+            $errors['contenu'] = $validerArticleEdit->textValid($postArticleEdit['contenu'], 'contenu', 10, 2000);
+            // $errors['auteur'] =
+
+            if ($validerArticleEdit->IsValid($errors)) :
+                // Insertion des données du formulaire en base de données
+                PostModel::update($postArticleEdit);
+                $this->redirect('articles');
+            endif;
+
+        endif;
+
+        $formAddEdit = new Form($errors);
+
+        $this->render('app.articles.editArticle', [
+            'formAddEdit' => $formAddEdit,
+        ]);
+    }
+
+
     public function show($id)
     {
         $note = $this->isArticleExist($id);
