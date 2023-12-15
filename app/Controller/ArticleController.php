@@ -27,7 +27,7 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-        $note = PostModel::findById($id);
+        $note = $this->isArticleExist($id);
         $user = new UserModel;
 
         $this->render('app.articles.show', [
@@ -38,11 +38,21 @@ class ArticleController extends Controller
 
     public function delete($id)
     {
+        $articleDelete = $this->isArticleExist($id);
         PostModel::delete($id);
         $this->redirect('articles');
     }
-}
 
-// public static function count(){
-//     return App::getDatabase()->aggregation("SELECT COUNT(id) FROM " . self::getTable());
-// }
+    public function isArticleExist($id)
+    {
+        $article = PostModel::findById($id);
+
+        // if (empty($article)) :
+        //     $this->Abort404();  --> Très verbeux. Voir ternaire ci-dedssous
+        // endif;
+
+        // return $article;
+
+        return (empty($article)) ? $this->Abort404() : $article; // Moins verbeux, une seule ligne !
+    }
+}
