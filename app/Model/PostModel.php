@@ -26,4 +26,17 @@ class PostModel extends ModelMVC
             ]
         );
     }
+
+    public static function update($postArticleEdit, $id)
+    {   
+        // var_dump($post);
+        // die;
+        App::getDatabase()->prepareInsert(
+            'UPDATE ' . self::$table .  ' SET title=?, content=? WHERE id='. $id,
+            [
+                $postArticleEdit['titre'],
+                $postArticleEdit['contenu']
+            ]
+        );
+    }
 }
